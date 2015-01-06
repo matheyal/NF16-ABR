@@ -41,6 +41,8 @@ int ajouter_mot (ArbreBR * arbre, char * mot, int ligne, int ordre, int num_phra
         tmp2->filsGauche = noeud;
     else
         tmp2->filsDroit = noeud;
+    arbre->nb_mots_differents++;
+    arbre->nb_mots_total++;
     return 1;
 
 }
@@ -71,12 +73,13 @@ NoeudABR * creer_noeud (char * mot, int ligne, int ordre, int num_phrase) {
 
 void afficher_arbre (ArbreBR arbre){
     parcours_infixe(arbre.racine);
+    printf("\n\n");
 }
 
 void parcours_infixe (NoeudABR * noeud){
     if (noeud != NULL){
         parcours_infixe(noeud->filsGauche);
-        printf("%s ", noeud->mot);
+        printf("- %s\n", noeud->mot);
         parcours_infixe(noeud->filsDroit);
     }
 }

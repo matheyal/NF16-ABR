@@ -33,7 +33,7 @@ int charger_fichier (ArbreBR * arbre, char * filename) {
         s[i] = '\0';
 
         ajouter_mot(arbre, s, ligne, ordre, num_phrase);
-        ordre++;
+
 
         while ((c == ' ') || (c == '\n') || (c == ',') || (c == ';') || (c == '.') || (c == '!') || (c == '?')) { //On passse tous les caractères non alphanumériques
             if ((c == '.') || (c == '!') || (c == '?'))
@@ -42,9 +42,18 @@ int charger_fichier (ArbreBR * arbre, char * filename) {
                 ligne++;
             c = fgetc(fichier);
         }
+        ordre++;
 
     }
     free(s);
     return 1;
 
+}
+
+void afficher_separateurs(int x) // Fonction esthétique servant a afficher les séparateurs pour le menu
+{
+    int i = 0;
+    for (i = 0 ; i<x ; i++)
+        printf("-");
+    printf("\n");
 }

@@ -65,3 +65,11 @@ int ajouter_position (ListePosition * listeP, int ligne, int ordre, int num_phra
 
 }
 
+void afficher_positions (ListePosition listeP){
+    Position * tmp = listeP.debut;
+    while (tmp != NULL){
+        printf("- Ligne %d, phrase %d, ordre %d\n", tmp->numero_ligne, tmp->numero_phrase, tmp->ordre);
+        tmp=tmp->suivant;
+    }
+}
+

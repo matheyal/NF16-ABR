@@ -18,5 +18,6 @@ typedef struct listePosition {
 ListePosition *creer_liste_positions();
 int ajouter_position (ListePosition * listeP, int ligne, int ordre, int num_phrase);
 Position * creer_position(int ligne, int ordre, int num_phrase);
+void afficher_positions (ListePosition listeP);
 
 #endif // LISTE_H_INCLUDED
