@@ -17,7 +17,7 @@ int ajouter_mot (ArbreBR * arbre, char * mot, int ligne, int ordre, int num_phra
 
     //L'arbre est non vide
     format_str(mot);
-    NoeudABR * tmp = rechercher_noeud(arbre, mot);
+    NoeudABR * tmp = rechercher_noeud(arbre, mot), *tmp2;
 
     if (tmp != NULL) {
         //Le mot est déjà présent dans l'arbre : on ajoute la nouvelle position
@@ -31,12 +31,16 @@ int ajouter_mot (ArbreBR * arbre, char * mot, int ligne, int ordre, int num_phra
     tmp = arbre->racine;
 
     while(tmp != NULL) {
+        tmp2=tmp;
         if (strcmp(tmp->mot, mot) > 0)
             tmp = tmp->filsGauche;
         else
             tmp = tmp->filsDroit;
     }
-    tmp = noeud;
+    if (strcmp(tmp2->mot, mot) > 0)
+        tmp2->filsGauche = noeud;
+    else
+        tmp2->filsDroit = noeud;
     return 1;
 
 }
@@ -54,9 +58,26 @@ NoeudABR * rechercher_noeud (ArbreBR * arbre, char * mot) {
 
 NoeudABR * creer_noeud (char * mot, int ligne, int ordre, int num_phrase) {
     NoeudABR * noeud = (NoeudABR*) malloc(sizeof(NoeudABR));
-    noeud->mot = mot;
+    int l=strlen(mot), i;
+    noeud->mot = malloc(sizeof(char)*l);
+    for (i=0 ; i<l ; i++)
+        noeud->mot[i] = mot[i];
+    mot[i]='\0';
     ajouter_position(&noeud->positions, ligne, ordre, num_phrase);
     noeud->filsDroit = NULL;
     noeud->filsGauche = NULL;
     return noeud;
 }
+
+void afficher_arbre (ArbreBR arbre){
+    parcours_infixe(arbre.racine);
+}
+
+void parcours_infixe (NoeudABR * noeud){
+    if (noeud != NULL){
+        parcours_infixe(noeud->filsGauche);
+        printf("%s ", noeud->mot);
+        parcours_infixe(noeud->filsDroit);
+    }
+}
+

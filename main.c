@@ -4,9 +4,9 @@
 
 int main()
 {
-    char s[15] ="Hello WorLd!";
-    printf("%s\n",s);
-    format_str(s);
-    printf("%s\n",s);
+    ArbreBR * arbre = creer_ABR();
+
+    charger_fichier(arbre, "texte.txt");
+    afficher_arbre(*arbre);
     return 0;
 }

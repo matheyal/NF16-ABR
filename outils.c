@@ -21,7 +21,7 @@ int charger_fichier (ArbreBR * arbre, char * filename) {
     }
 
     int i = 0, ligne = 1, ordre = 1, num_phrase = 1;
-    char c, *s;
+    char c = fgetc(fichier), *s = malloc(sizeof(char)*30);
 
     while (c != EOF){
         i = 0;
@@ -44,6 +44,7 @@ int charger_fichier (ArbreBR * arbre, char * filename) {
         }
 
     }
+    free(s);
     return 1;
 
 }

@@ -50,7 +50,7 @@ int ajouter_position (ListePosition * listeP, int ligne, int ordre, int num_phra
     while ((tmp->suivant != NULL) && (tmp->suivant->numero_ligne == ligne) && (tmp->suivant->ordre < ordre)) {
         tmp = tmp->suivant;
     }
-    if ((tmp->suivant->numero_ligne == ligne) && (tmp->suivant->ordre == ordre)) {
+    if ((tmp->suivant != NULL) && (tmp->suivant->numero_ligne == ligne) && (tmp->suivant->ordre == ordre)) {
         //Le mot à l'endroit passé en paramètre est déjà dans la liste
         return 0;
     }
