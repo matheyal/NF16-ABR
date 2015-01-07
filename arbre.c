@@ -84,3 +84,33 @@ void parcours_infixe (NoeudABR * noeud){
     }
 }
 
+void afficher_phrase (ArbreBR * arbre, int num_phrase){
+
+
+}
+
+int rechercher_phrase (ArbreBR * arbre, char * mot1, char * mot2, int * resultat_phrase){
+    NoeudABR *tmp1, *tmp2;
+    int i = 0;
+    tmp1 = rechercher_noeud(arbre, mot1);
+    tmp2 = rechercher_noeud(arbre, mot2);
+    if ((tmp1 == NULL) || (tmp2 == NULL))
+        return -1;
+    Position *pos1, *pos2;
+    pos1 = tmp1->positions.debut;
+    pos2 = tmp2->positions.debut;
+    while ((pos1 != NULL) && (pos2 != NULL)){
+        if (pos1->numero_phrase == pos2->numero_phrase){
+            resultat_phrase[i] = pos1->numero_phrase;
+            i++;
+            pos1 = pos1->suivant;
+            pos2 = pos2->suivant;
+        }
+        else if (pos1->numero_phrase < pos2->numero_phrase)
+            pos1 = pos1->suivant;
+        else
+            pos2 = pos2->suivant;
+    }
+    return i-1;
+}
+

@@ -24,5 +24,7 @@ NoeudABR * creer_noeud (char * mot, int ligne, int ordre, int num_phrase);
 int charger_fichier (ArbreBR * arbre, char * filename);
 void afficher_arbre (ArbreBR arbre);
 void parcours_infixe (NoeudABR * noeud);
+void afficher_phrase (ArbreBR * arbre, int num_phrase);
+int rechercher_phrase (ArbreBR * arbre, char * mot1, char * mot2, int * resultat_phrase);
 
 #endif // ARBRE_H_INCLUDED

@@ -4,8 +4,8 @@
 
 int main()
 {
-    int choix=0;
-    char nom_fichier[30], mot_tmp[20];
+    int choix=0, num_tmp, resultat_phrase[20], i;
+    char nom_fichier[30], mot_tmp[20], mot_tmp2[20];
     ArbreBR * arbre;
     NoeudABR * noeud_tmp;
 
@@ -70,6 +70,21 @@ int main()
                 }
                 else
                     printf("Ce mot n'est pas dans le texte\n");
+                choix = 0;
+                break;
+
+            /*Recherche de phrase à partir de 2 mots*/
+            case 6 :
+                printf("Entrez les mots recherches : ");
+                scanf ("%s %s",mot_tmp, mot_tmp2);
+                num_tmp = rechercher_phrase(arbre, mot_tmp, mot_tmp2, resultat_phrase);
+                if (num_tmp != -1){
+                    printf("\nCes deux mots sont présents dans la(les) phrase(s) :\n");
+                    for (i = 0 ; i <= num_tmp ; i++)
+                        printf("Phrase %d\n", resultat_phrase[i]);
+                }
+                else
+                    printf("\nAucune phrase ne contient ces deux mots\n");
                 choix = 0;
                 break;
 

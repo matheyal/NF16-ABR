@@ -31,7 +31,7 @@ int charger_fichier (ArbreBR * arbre, char * filename) {
             c = fgetc(fichier);
         }
         s[i] = '\0';
-
+        format_str(s);
         ajouter_mot(arbre, s, ligne, ordre, num_phrase);
 
 
