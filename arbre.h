@@ -1,30 +1,30 @@
 #ifndef ARBRE_H_INCLUDED
-
 #define ARBRE_H_INCLUDED
 
-#include "liste.h"
-#include "outils.h"
-
-typedef struct noeudABR {
-    char * mot;
+/*Définition de la structure NoeudABR contenant le champ mot,
+une liste des positions des mots dans le texte et d'un pointeur sur les noeuds fils droit et fils gauche*/
+typedef struct NoeudABR
+{
+    char* mot;
     ListePosition positions;
-    struct noeudABR *filsGauche;
-    struct noeudABR *filsDroit;
+    struct NoeudABR* filsGauche;
+    struct NoeudABR* filsDroit;
 }NoeudABR;
 
-typedef struct arbreBR {
-    NoeudABR * racine;
-    int nb_mots_differents, nb_mots_total;
+/*Définition de la structure ArbreBR qui contient le champ racine qui contient le noeud racine de l'arbre, et un champ nb_mots_différents qui
+contient le nombre de noeuds, et le champ nb_mots_total qui contient le nombre de mots total du fichier*/
+typedef struct ArbreBR
+{
+    NoeudABR* racine;
+    int nb_mots_differents;
+    int nb_mots_total;
 }ArbreBR;
 
-ArbreBR * creer_ABR();
-int ajouter_mot (ArbreBR * arbre, char * mot, int ligne, int ordre, int num_phrase);
-NoeudABR * rechercher_noeud (ArbreBR * arbre, char * mot);
-NoeudABR * creer_noeud (char * mot, int ligne, int ordre, int num_phrase);
-int charger_fichier (ArbreBR * arbre, char * filename);
-void afficher_arbre (ArbreBR arbre);
-void parcours_infixe (NoeudABR * noeud);
-void afficher_phrase (ArbreBR * arbre, int num_phrase);
-int rechercher_phrase (ArbreBR * arbre, char * mot1, char * mot2, int * resultat_phrase);
+/*Déclaration des différentes fonctions relatives à la gestion de l'arbre*/
+ArbreBR *creer_abr();
+int ajouter_noeud(ArbreBR *arbre, NoeudABR *noeud);
+int charger_fichier(ArbreBR *arbre, char *filename);
+NoeudABR* rechercher_noeud(ArbreBR *arbre, char *mot);
+void afficher_arbre(ArbreBR arbre);
 
 #endif // ARBRE_H_INCLUDED
