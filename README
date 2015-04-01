@@ -4,7 +4,7 @@ Authors : Alexis MATHEY et Celestin VALLOIS (Université de Technologie de Compi
 
 --- 
 
-Here is a practical exercise of the course NF16. We have to increment a program which reads a text file and orders all the words from this file into a Binary research tree and referencing every positions of each word in the text.
+Here is a practical exercise of the course NF16 (ALGORITHM AND DATA STRUCTURES). We have to increment a program which reads a text file and orders all the words from this file into a Binary research tree and referencing every positions of each word in the text.
 
 Ceci est un exercice de TP du cours de NF16. Nous devons incrémenter un programme qui lit un fichier texte et range tous les mots du texte dans un arbre bianire de recherche tout en référençant pour chaque mot ses différentes positions dans le texte.
 
